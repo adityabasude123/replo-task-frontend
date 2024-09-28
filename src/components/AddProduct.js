@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ const AddProduct = () => {
   const [rating, setRating] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -120,7 +122,7 @@ const AddProduct = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200 mb-4"
             disabled={loading}
           >
             {loading ? (
@@ -137,6 +139,12 @@ const AddProduct = () => {
             )}
           </button>
         </form>
+        <button
+          onClick={() => navigate(-1)}
+          className="w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition duration-200"
+        >
+          Go Back
+        </button>
       </div>
     </div>
   );
